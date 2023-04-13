@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>Java_Cucumber_Selenium_Framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Java_Cucumber_Selenium_Framework</name>
+    <!-- FIXME change it to the project's website -->
+    <url>https://bbb.testpro.io</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <cucumber.version>7.11.1</cucumber.version>
+        <cucumber-expressions.version>5.0.0</cucumber-expressions.version>
+        <extentreports-cucumber.version>1.12.0</extentreports-cucumber.version>
+        <junit.version>4.13.2</junit.version>
+        <selenium.version>4.8.1</selenium.version>
+        <org.slf4j>2.0.7</org.slf4j>
+        <webdrivermanager>5.3.2</webdrivermanager>
+        <json-simple>1.1.1</json-simple>
+        <javafaker>1.0.2</javafaker>
+        <commons-text.version>1.9</commons-text.version>
+
+        <maven-clean-plugin>3.1.0</maven-clean-plugin>
+        <maven-resources-plugin>3.0.2</maven-resources-plugin>
+        <maven-compiler-plugin>3.10.1</maven-compiler-plugin>
+        <maven-jar-plugin>3.0.2</maven-jar-plugin>
+        <maven-install-plugin>2.5.2</maven-install-plugin>
+        <maven-deploy-plugin>2.8.2</maven-deploy-plugin>
+        <maven-site-plugin>3.7.1</maven-site-plugin>
+        <maven-project-info-reports-plugin>3.0.0</maven-project-info-reports-plugin>
+
+        <maven.surefire.version>2.22.2</maven.surefire.version>
+        <maven.failsafe.version>3.0.0-M3</maven.failsafe.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>tag-expressions</artifactId>
+            <version>${cucumber-expressions.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>${extentreports-cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${org.slf4j}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>${json-simple}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>14</source>
+                    <target>14</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <app.url>http://{COMPLÉTER ICI}/admin/</app.url>
+                        <hub.url>http://{COMPLÉTER ICI}:4444/wd/hub</hub.url>
+                        <temps.de.chargement.de.page>30</temps.de.chargement.de.page>
+                    </systemPropertyVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <!--
+                            <excludes>
+                                <exclude></exclude>
+                            </excludes>
+                            -->
+                            <includes>
+                                <include>src/test/java/runner/Runner.java</include>
+                                <!--  <include>**/*Runner.java</include> -->
+                            </includes>
+                            <!--
+                            <parallel>methods</parallel>
+                            <threadCount>3</threadCount>
+                            <perCoreThreadCount>false</perCoreThreadCount>
+                            -->
+                            <!--
+                            <useUnlimitedThreads>true</useUnlimitedThreads>
+                            <forkCount></forkCount>
+                            <reuseForks></reuseForks>
+                            <reportsDirectory></reportsDirectory>
+                            -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
