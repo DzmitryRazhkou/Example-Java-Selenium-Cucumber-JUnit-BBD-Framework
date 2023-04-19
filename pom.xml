@@ -30,17 +30,18 @@
         <javafaker>1.0.2</javafaker>
         <commons-text.version>1.9</commons-text.version>
 
+
+        <maven.compiler.version>3.10.1</maven.compiler.version>
+        <maven.surefire.version>2.22.2</maven.surefire.version>
+        <maven.failsafe.version>3.0.0-M3</maven.failsafe.version>
+
         <maven-clean-plugin>3.1.0</maven-clean-plugin>
         <maven-resources-plugin>3.0.2</maven-resources-plugin>
-        <maven-compiler-plugin>3.10.1</maven-compiler-plugin>
         <maven-jar-plugin>3.0.2</maven-jar-plugin>
         <maven-install-plugin>2.5.2</maven-install-plugin>
         <maven-deploy-plugin>2.8.2</maven-deploy-plugin>
         <maven-site-plugin>3.7.1</maven-site-plugin>
         <maven-project-info-reports-plugin>3.0.0</maven-project-info-reports-plugin>
-
-        <maven.surefire.version>2.22.2</maven.surefire.version>
-        <maven.failsafe.version>3.0.0-M3</maven.failsafe.version>
     </properties>
 
     <dependencies>
@@ -131,26 +132,33 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <encoding>UTF-8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
+                <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <!--suppress UnresolvedMavenProperty -->
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-                    </suiteXmlFiles>
-                    <systemPropertyVariables>
-                        <app.url>http://{COMPLÉTER ICI}/admin/</app.url>
-                        <hub.url>http://{COMPLÉTER ICI}:4444/wd/hub</hub.url>
-                        <temps.de.chargement.de.page>30</temps.de.chargement.de.page>
-                    </systemPropertyVariables>
-                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.failsafe.version}</version>
+<!--                <configuration>-->
+<!--                    <suiteXmlFiles>-->
+<!--                        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
+<!--                    </suiteXmlFiles>-->
+<!--                    <systemPropertyVariables>-->
+<!--                        <app.url>http://{COMPLÉTER ICI}/admin/</app.url>-->
+<!--                        <hub.url>http://{COMPLÉTER ICI}:4444/wd/hub</hub.url>-->
+<!--                        <temps.de.chargement.de.page>30</temps.de.chargement.de.page>-->
+<!--                    </systemPropertyVariables>-->
+<!--                </configuration>-->
                 <executions>
                     <execution>
                         <goals>
@@ -164,14 +172,12 @@
                             </excludes>
                             -->
                             <includes>
-                                <include>src/test/java/runner/Runner.java</include>
+                                <include>**/Runner.java</include>
                                 <!--  <include>**/*Runner.java</include> -->
                             </includes>
-                            <!--
                             <parallel>methods</parallel>
                             <threadCount>3</threadCount>
-                            <perCoreThreadCount>false</perCoreThreadCount>
-                            -->
+                            <perCoreThreadCount>true</perCoreThreadCount>
                             <!--
                             <useUnlimitedThreads>true</useUnlimitedThreads>
                             <forkCount></forkCount>

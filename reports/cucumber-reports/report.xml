@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="35.153" tests="3" skipped="0" failures="0" errors="0">
-<testcase classname="KOEL Login Page Feature" name="Login With Correct Credentials Test" time="17.139">
+<testsuite name="Cucumber" time="14.289" tests="3" skipped="0" failures="0" errors="0">
+<testcase classname="KOEL Login Page Feature" name="Login With Correct Credentials Test" time="6.188">
 <system-out><![CDATA[
 When User types correct credentials.........................................passed
 Then User successfully logs in "Home".......................................passed
 And User navigates on the main page.........................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="KOEL Login Page Feature" name="Login With Incorrect Credentials Test" time="8.537">
+<testcase classname="KOEL Login Page Feature" name="Login With Incorrect Credentials Test" time="3.63">
 <system-out><![CDATA[
 When User types incorrect credentials.......................................passed
 Then Pop up error is showed up..............................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="KOEL Login Page Feature" name="Register A New Student Test" time="8.979">
+<testcase classname="KOEL Login Page Feature" name="Register A New Student Test" time="4.083">
 <system-out><![CDATA[
 When User clicks on the registration button.................................passed
 And User types email for registration.......................................passed
